@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2025-10-31T08:17:03Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: linkding
+  name: linkding
+  namespace: linkding
+  resourceVersion: "261938"
+  uid: 6e640505-632d-4151-ad12-7c1d9d10d4d6
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.43.202.99
+  clusterIPs:
+  - 10.43.202.99
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 31922
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
+  selector:
+    app: linkding
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.64.2
+      ipMode: VIP
